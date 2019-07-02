@@ -16,7 +16,7 @@ clienteSchema = new mongoose.Schema({
     telefono: {
         type: String,
         required: true,
-        match:/^([0-9]{5})+(-)+([0-9]{6})$/
+        match:/^([0-9]{5})+(-){0,1}([0-9]{5})$/i
     },
     email: {
         type: String,

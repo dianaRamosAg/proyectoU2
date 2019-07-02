@@ -16,8 +16,9 @@ productoSchema = new mongoose.Schema({
         required: true
     },
     
-    marca:{ type: Schema.ObjectId, ref: "marca" } 
-    ,
+   // marca:{ type: Schema.ObjectId, ref: "marca" } ,
+   
+    
     cantidad: {
         type: Number,
         required: true  

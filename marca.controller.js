@@ -1,14 +1,18 @@
 var mongoose = require("mongoose");
 var schema = require("./marca.model");
 
-mongoose.connect('mongodb://localhost:27017/bdU2');
 var Marca = mongoose.model('Marca', schema, 'marca');
 //------------------CRUD---------------------------------------
 //Insertar
 function insertarM(marca) {
-    Marca.save(marca)
+    Marca.create(marca)
+    .then((data) => {
         console.log("Marca guardada");
-        console.log(data);
+    })
+    .catch((error) => {
+        console.log("Error en marca");
+        console.log(error);
+    });
 }
 //Consulta
 
