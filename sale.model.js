@@ -2,15 +2,16 @@ const mongoose = require("mongoose");
 
 
 ventaSchema = new mongoose.Schema({
-    cliente: {
-
+    client: {
+        type: mongoose.Schema.Types.ObjectId, ref: 'Client'
     },
-    fecha:{
+    date:{
         type: Date,
         required: true
     },
-    prductos:[{codigo:String, pVenta: Number}],
-
+    prducts:{
+        type: mongoose.Schema.Types.ObjectId, ref: 'Products'
+    },    
     subtotal: {
         type: Number,
         required: true
@@ -35,4 +36,3 @@ ventarSchema.pre('save', function(next) {
     next();
 });
 
-module.exports = mongoose.model("venta", ventaSchema);
