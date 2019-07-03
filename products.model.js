@@ -2,34 +2,34 @@ const mongoose = require("mongoose");
 
 
 productoSchema = new mongoose.Schema({
-    codigo: {
+    name: {
         type: String,
         required: true,
        
     },
-    pCompra: {
+    price: {
         type: Number,
         required: true
     },
-    pVenta: {
+    cost: {
         type: Number,
         required: true
     },
 
-   // marca:{ type: Schema.ObjectId, ref: "marca" } ,
-   
-    
-    cantidad: {
+    quantity: {
         type: Number,
         required: true  
     },
-    minimo: {
+    min: {
         type: Number,
         required: true  
     },
-    maximo: {
+    max: {
         type: Number,
         required: true  
+    },
+    brand: {
+        type: mongoose.Schema.Types.ObjectId, ref: 'Brand'
     }
 });
-module.exports = mongoose.model("productos", productoSchema);
+module.exports = mongoose.model("products", productoSchema);
