@@ -3,9 +3,7 @@ const productosController = require("./productos.controller");
 const ventaController = require("./venta.controller");
 const marcaController = require("./marca.controller");
 
-/*PARA PROBAR SUS COSAS LES RECOMIENDO COMENTAR LO DEMÁS PARA
-QUE PRUEBEN DIRECTAMENTE LO SUYO
-*/
+
 //Cliente
 var cliente = {
     RFC:"GAFJ810702NA0",
@@ -28,8 +26,7 @@ clienteController.ActualizarCDom('Av Orquidea #55');
 
 //Marcas
 var marca = {
-    nombre:"lala",
-    creador:"maria"
+    nombre:"lala"
 };
 marcaController.insertarM(marca);
 
