@@ -2,8 +2,9 @@ const mongoose = require("mongoose");
 
 
 ventaSchema = new mongoose.Schema({
-    cliente: [{name: String, numero: String}],
+    cliente: {
 
+    },
     fecha:{
         type: Date,
         required: true
