@@ -15,7 +15,7 @@ productoSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    
+
    // marca:{ type: Schema.ObjectId, ref: "marca" } ,
    
     
@@ -32,4 +32,4 @@ productoSchema = new mongoose.Schema({
         required: true  
     }
 });
-module.exports = mongoose.model("producto", productoSchema);
+module.exports = mongoose.model("productos", productoSchema);

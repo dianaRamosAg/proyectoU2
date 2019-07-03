@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 
-userSchema = new mongoose.Schema({
+ventaSchema = new mongoose.Schema({
     cliente: [{name: String, numero: String}],
-    
+
     fecha:{
         type: Date,
         required: true
@@ -26,12 +26,12 @@ userSchema = new mongoose.Schema({
 
 });
 
-userSchema.pre('save', function(next) {
+ventarSchema.pre('save', function(next) {
     var self = this;
-    self.birthdate = self.curp.substr(4,2)+"/"+self.curp.substr(6,2)+"/"+self.curp.substr(8,2);
+    self.subtotal = self.pVenta+self.pVenta;
+    self.iva = self.subtotal*1.16;
+    self.total = self.iva+self.subtotal;
     next();
 });
 
-
-
-module.exports = userSchema;
+module.exports = mongoose.model("venta", ventaSchema);

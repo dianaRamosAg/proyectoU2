@@ -31,3 +31,12 @@ var marca = {
 marcaController.insertarM(marca);
 
 //Ventas
+var venta={
+    cliente: "Diana Laura Ramos aguilar",
+    fecha: "02/07/2019",
+    subtotal: 145,
+}
+
+clienteController.insertarv(cliente);
+clienteController.ConsultaF("02/07/2019");
+//clienteController.EliminarC('GAFJ810702NA0');
