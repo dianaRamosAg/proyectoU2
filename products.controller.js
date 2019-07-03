@@ -1,47 +1,53 @@
-var mongoose = require("mongoose");
-var schema = require("./productos.model");
+// var mongoose = require("mongoose");
+// var productSchema = require("./product.model");
+var brandController = require("./brand.controller");
 
-var mongoose = require("mongoose");
-var schema = require("./productos.model");
+// mongoose.connect('mongodb://localhost:27017/ae2010veje06', { useNewUrlParser: true });
 
-mongoose.connect('mongodb://localhost:27017/bdU2');  //bd proy2
-var producto = mongoose.model('productos', schema, 'productos');
 
-//Insertar
-function insertarP(producto) {
-    productos.create(producto)
-    .then((data) => {
-        console.log("Producto guardado");
-    })
-    .catch((error) => {
-        console.log("Error en el producto");
-        console.log(error);
-    });
+async function create(product, brand, Product, Brand) {
+
+    var brand = {
+        brand: brand
+    };
+
+    var brandCreated = await brandController.create(brand, Brand);
+
+    product["brand"] = brandCreated._id;
+
+    var productCreated = await Product.create(product)
+        .then((data) => {
+            console.log("Producto Guardado!!!");
+            // console.log(data);
+            return data;
+        })
+        .catch((error) => {
+            console.log("Error!!!");
+            // console.log(error);
+            return error;
+        });
+    return productCreated;
 }
-//Consulta por codigo
-function ConsultaProdXnombre(cod) {
-    producto.find({codigo:cod},function(error,docs){
-        if(error){
-            console.log("Error en el producto");
-            console.log(error);
-        }
-        console.log("Consulta por codigo de producto");
-        console.log(docs);
+
+async function findByPrice(priceToFind, Product) {
+
+    var params = {
+        price: priceToFind
     }
-    );
+
+    var productFind = await Product.find(params)
+        .populate("brand")
+        .then((data) => {
+            // console.log(data);
+            return data;
+        })
+        .catch((err) => {
+            console.log("Not found");
+            return err;
+        });
+
+    return productFind;
 }
-//Actualizar 
-//pendiente
-//Eliminar
-/*function EliminarP(id) {
-    User.findByIdAndRemove({_id:id},
-    function(error,docs)
-    {
-        if(error){
-            console.log(error);
-        }
-        console.log("Producto Eliminado");
-        console.log(docs);
-    }
-    );
-    }*/
+
+module.exports.create = create;
+module.exports.findByPrice = findByPrice;
