@@ -17,7 +17,11 @@ async function createBrandAndProduct() {
     var product = {
         name: "MacBook Air",
         price: 100,
-        cost: 50
+        cost: 50,
+        quantity:30,
+        min: 10,
+        max: 50
+
     };
     
     const brand = "Apple";
