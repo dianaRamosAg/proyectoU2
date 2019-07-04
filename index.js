@@ -86,7 +86,7 @@ async function DeleteClient(id) {
 //createClient();
 //findClient("GAFJ810702NA0");
 //UpdateByCell();
-DeleteClient();
+//DeleteClient();
 
 
 
