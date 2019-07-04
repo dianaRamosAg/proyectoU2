@@ -59,7 +59,7 @@ async function findClient(RFC) {
 }
 
 createClient();
-
+findClient("RINR9612211AM9");
 
 
 
