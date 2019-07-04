@@ -2,22 +2,15 @@ var productsController = require("./products.controller");
 var clientsController = require("./clients.controller");
 
 
-async function create(product, clients, Product, Clients) {
-
-    var product = {
-        product: product
-    };
+async function create(sale, clients, Sale, Clients) {
 
     var clients = {
         clients: clients
     };
 
-
-    var productCreated = await productsController.create(product, Product);
     var clientsCreated = await clientsController.create(clients, Clients);
 
     sale["clients"] = clientsCreated.name;
-    sale["products"] = productsCreated.cost;
 
     var saleCreated = await Sale.create(sale)
         .then((data) => {
