@@ -41,6 +41,14 @@ async function findProduct(price) {
 //createBrandAndProduct();
 //findProduct(100);
 
+async function DeleteBrand(id) {
+    var BrandID = await brandController.DeleteBrand(id,Brand)
+    console.log("------- Marca eliminada--------");
+    console.log(BrandID);
+}
+//DeleteBrand();
+
+
 //------------ Cliente
 
 async function createClient() {
