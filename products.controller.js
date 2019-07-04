@@ -49,11 +49,12 @@ async function findByPrice(priceToFind, Product) {
     return productFind;
 }
 //deletedProduct
-async function deletedProduct(idP, product) {
+async function deletedProduct(idP, Product) {
     var params = {
         _id: idP
+
     }
-    var deletedProduct = await product.findByIdAndRemove({_id:'5d1d4b7fa12f66291cdf9f0c'})
+    var deletedProduct = await Product.findByIdAndRemove({_id:'5d1d4b7fa12f66291cdf9f0c'})
         .then((data) => {
             console.log("Eliminar producto");
             return data;
@@ -64,7 +65,89 @@ async function deletedProduct(idP, product) {
         });
     return deletedProduct;
 }
+//update
+async function UpdateByPrice(price, Product) {
+    var params = {
+        price: price,
+    }
+    var UpdateByPrice= await Product.update({_id:'5d1e8896114ec430a8d9b563'},{$set:{price:"60"}})
+        .then((data) => {
+            console.log("Actualizar el precio del producto");
+            return data;
+        })
+        .catch((err) => {
+            console.log("Error");
+            return err;
+        });
+    return UpdateByPrice;
+}
+async function UpdateByCost(cost, Product) {
+    var params = {
+        cost: cost,
+    }
+    var UpdateByCost= await Product.update({_id:'5d1e8896114ec430a8d9b563'},{$set:{cost:"40"}})
+        .then((data) => {
+            console.log("Actualizar el costo del producto");
+            return data;
+        })
+        .catch((err) => {
+            console.log("Error");
+            return err;
+        });
+    return UpdateByCost;
+}
+async function UpdateByQuantity(quantity, Product) {
+    var params = {
+        quantity: quantity,
+    }
+    var UpdateByQuantity= await Product.update({_id:'5d1e8896114ec430a8d9b563'},{$set:{quantity:"40"}})
+        .then((data) => {
+            console.log("Actualizar la cantidad del producto");
+            return data;
+        })
+        .catch((err) => {
+            console.log("Error");
+            return err;
+        });
+    return UpdateByQuantity;
+}
 
+async function UpdateByMin(min, Product) {
+    var params = {
+        min: min,
+    }
+    var UpdateByMin= await Product.update({_id:'5d1e8896114ec430a8d9b563'},{$set:{min:"30"}})
+        .then((data) => {
+            console.log("Actualizar la cantidad minima del producto");
+            return data;
+        })
+        .catch((err) => {
+            console.log("Error");
+            return err;
+        });
+    return UpdateByMin;
+}
+
+async function UpdateByMax(max, Product) {
+    var params = {
+        max: max,
+    }
+    var UpdateByMax= await Product.update({_id:'5d1e8896114ec430a8d9b563'},{$set:{max:"80"}})
+        .then((data) => {
+            console.log("Actualizar la cantidad maxima del producto");
+            return data;
+        })
+        .catch((err) => {
+            console.log("Error");
+            return err;
+        });
+    return UpdateByMax;
+}
 module.exports.create = create;
 module.exports.findByPrice = findByPrice;
 module.exports.deletedProduct=deletedProduct;
+module.exports.UpdateByPrice=UpdateByPrice;
+module.exports.UpdateByCost=UpdateByCost;
+module.exports.UpdateByQuantity=UpdateByQuantity;
+module.exports.UpdateByMin=UpdateByMin;
+module.exports.UpdateByMax=UpdateByMax;

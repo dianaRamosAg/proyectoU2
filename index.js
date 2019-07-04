@@ -45,7 +45,44 @@ async function findProduct(price) {
 
     console.log(productPrice);
 }
- 
+//deleted product
+async function deletedProduct(id) {
+    var productID = await productsController.deletedProduct(id,Product)
+    console.log("------- producto eliminado--------");
+    console.log(productID);
+}
+//update product
+async function updateByPrice(price) {
+    var price = await productsController.UpdateByPrice(price,Product)
+    console.log("------- precio de producto actualizado--------");
+    console.log(price);
+}
+async function updateByCost(cost) {
+    var cost = await productsController.UpdateByCost(cost,Product)
+    console.log("------- costo de producto actualizado--------");
+    console.log(cost);
+}
+async function updateByQuantity(quantity) {
+    var quantity = await productsController.UpdateByQuantity(quantity,Product)
+    console.log("------- cantidad de producto actualizado--------");
+    console.log(quantity);
+}
+async function updateByMin(min) {
+    var min = await productsController.UpdateByMin(min,Product)
+    console.log("------- cantidad minima de producto actualizado--------");
+    console.log(min);
+}
+async function updateByMax(max) {
+    var max = await productsController.UpdateByMax(max,Product)
+    console.log("------- cantidad minima de producto actualizado--------");
+    console.log(max);
+}
+//updateByMax();
+//updateByMin();
+//updateByQuantity();
+//updateByCost();
+//updateByPrice();
+//deletedProduct();
 //createBrandAndProduct();
 //findProduct(100);
 
@@ -54,7 +91,9 @@ async function DeleteBrand(id) {
     console.log("------- Marca eliminada--------");
     console.log(BrandID);
 }
-//deletedProduct();
+
+//
+
 
 //DeleteBrand();
 
