@@ -38,19 +38,18 @@ async function findProduct(price) {
     console.log(productPrice);
 }
  
-createBrandAndProduct();
-findProduct(100);
+//createBrandAndProduct();
+//findProduct(100);
 
 //------------ Cliente
 
 async function createClient() {
     var client = {
-        RFC: "RINR9612211AM9",
+        RFC: "GAFJ810702NA0",
         name: 'Carlos Uriel Martinez',
         address: 'Fracc. Jacarandas ',
         cell:'3112196165',
         email:'diana.laura9625@gmail.com'
-
     };
     
     var clientCreated = await clientsController.create(client,Client);
@@ -64,9 +63,22 @@ async function findClient(RFC) {
     console.log(clientRFC);
 }
 
-createClient();
-findClient("RINR9612211AM9");
-//UpdateByCell("3111255293");
+async function UpdateByCell(cell) {
+    var clientCell = await clientsController.UpdateByCell(cell,Client)
+    console.log("------- celular Actualizado--------");
+    console.log(clientCell);
+}
+async function DeleteClient(id) {
+    var clientID = await clientsController.DeleteClient(id,Client)
+    console.log("------- Cliente eliminado--------");
+    console.log(clientID);
+}
+
+
+//createClient();
+//findClient("GAFJ810702NA0");
+//UpdateByCell();
+DeleteClient();
 
 
 
