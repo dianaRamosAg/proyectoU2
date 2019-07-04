@@ -5,19 +5,31 @@ const saleCintroller = require("./sale.controller");
 var mongoose = require("mongoose");
 var brandSchema = require("./brand.model");
 var productSchema = require("./products.model");
+
 var saleSchema = require("./sale.model");
+
+var clientSchema = require("./clients.model");
+
 
 mongoose.connect('mongodb://localhost:27017/bdAEU2', { useNewUrlParser: true }); //Conexión
 
 var Brand = mongoose.model('Brand', brandSchema, 'brands');
 var Product = mongoose.model('Product', productSchema, 'products');
+
 var Sale = mongoose.model('Sale', saleSchema, 'sale');
+
+var Client= mongoose.model('Client', clientSchema, 'clients');
+
 
 async function createBrandAndProduct() {
     var product = {
         name: "MacBook Air",
         price: 100,
-        cost: 50
+        cost: 50,
+        quantity:30,
+        min: 10,
+        max: 50
+
     };
     
     const brand = "Apple";
@@ -34,35 +46,55 @@ async function findProduct(price) {
     console.log(productPrice);
 }
  
-createBrandAndProduct();
-findProduct(100);
+//createBrandAndProduct();
+//findProduct(100);
+
+async function DeleteBrand(id) {
+    var BrandID = await brandController.DeleteBrand(id,Brand)
+    console.log("------- Marca eliminada--------");
+    console.log(BrandID);
+}
+//DeleteBrand();
+
 
 //------------ Cliente
 
 async function createClient() {
     var client = {
-        RFC: "RINR9612211AM9",
+        RFC: "GAFJ810702NA0",
         name: 'Carlos Uriel Martinez',
         address: 'Fracc. Jacarandas ',
-        cell:'311-219-61-65',
+        cell:'3112196165',
         email:'diana.laura9625@gmail.com'
-
     };
     
-    var clientCreated = await clientsController.create(client);
+    var clientCreated = await clientsController.create(client,Client);
     console.log(" Cliente guardado ");
     console.log(clientCreated);
 }
 
 async function findClient(RFC) {
-    var clientRFC = await clientsController.findByRFC(RFC)
+    var clientRFC = await clientsController.findByRFC(RFC,Client)
     console.log("------- Cliente Encontrado  por RFC--------");
-
     console.log(clientRFC);
 }
 
-createClient();
-findClient("RINR9612211AM9");
+async function UpdateByCell(cell) {
+    var clientCell = await clientsController.UpdateByCell(cell,Client)
+    console.log("------- celular Actualizado--------");
+    console.log(clientCell);
+}
+async function DeleteClient(id) {
+    var clientID = await clientsController.DeleteClient(id,Client)
+    console.log("------- Cliente eliminado--------");
+    console.log(clientID);
+}
+
+
+//createClient();
+//findClient("GAFJ810702NA0");
+//UpdateByCell();
+//DeleteClient();
 
 // venta
 var dat = new Date();

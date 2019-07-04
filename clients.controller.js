@@ -1,5 +1,5 @@
 
-async function create(Client) {
+async function create(client,Client) {
     var clientCreated = await Client.create(client)
         .then((data) => {
             console.log("Cliente Guardado");
@@ -30,6 +30,42 @@ async function findByRFC(RFCtoFind, Client) {
 
     return clientFind;
 }
+async function UpdateByCell(CellUP, Client) {
+    var params = {
+        cell: CellUP,
+    }
+    var updateClientCell = await Client.update({_id:'5d1d4d323c5b76276c684f17'},{$set:{cell:"3111111112"}})
+        .then((data) => {
+            console.log("Actualizar telefono del cliente");
+            return data;
+        })
+        .catch((err) => {
+            console.log("Error");
+            return err;
+        });
+    return updateClientCell;
+}
+async function DeleteClient(idC, Client) {
+    var params = {
+        _id: idC
+    }
+    var deleteClient = await Client.findByIdAndRemove({_id:'5d1d4d323c5b76276c684f17'})
+        .then((data) => {
+            console.log("Eliminar cliente");
+            return data;
+        })
+        .catch((err) => {
+            console.log("Error");
+            return err;
+        });
+    return deleteClient;
+}
+
+
+
+
 
 module.exports.create = create;
 module.exports.findByRFC = findByRFC;
+module.exports.UpdateByCell = UpdateByCell;
+module.exports.DeleteClient = DeleteClient;

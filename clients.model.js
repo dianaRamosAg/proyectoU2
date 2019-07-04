@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-clientSchema = new mongoose.Schema({
+module.exports  = new mongoose.Schema({
     RFC: {
         type: String,
         required: true,
@@ -26,5 +26,3 @@ clientSchema = new mongoose.Schema({
         lowercase: true
     }
 });
-
-module.exports = clientSchema;
