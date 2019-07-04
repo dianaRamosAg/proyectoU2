@@ -41,7 +41,7 @@ async function createClient() {
         RFC: "RINR9612211AM9",
         name: 'Carlos Uriel Martinez',
         address: 'Fracc. Jacarandas ',
-        cell:'311-219-61-65',
+        cell:'3112196165',
         email:'diana.laura9625@gmail.com'
 
     };
@@ -54,12 +54,12 @@ async function createClient() {
 async function findClient(RFC) {
     var clientRFC = await clientsController.findByRFC(RFC)
     console.log("------- Cliente Encontrado  por RFC--------");
-
     console.log(clientRFC);
 }
 
 createClient();
 findClient("RINR9612211AM9");
+UpdateByCell("3111255293");
 
 
 
