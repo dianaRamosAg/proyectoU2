@@ -20,7 +20,7 @@ var Sale = mongoose.model('Sale', saleSchema, 'sale');
 
 var Client= mongoose.model('Client', clientSchema, 'clients');
 
-
+//Producto
 async function createBrandAndProduct() {
     var product = {
         name: "MacBook Air",
@@ -54,6 +54,8 @@ async function DeleteBrand(id) {
     console.log("------- Marca eliminada--------");
     console.log(BrandID);
 }
+//deletedProduct();
+
 //DeleteBrand();
 
 
@@ -123,8 +125,8 @@ async function findProduct(price) {
     console.log(productPrice);
 }
  
-createSaleAndP();
-findProduct(100);
+//createSaleAndP();
+//findProduct(100);
 
 
 

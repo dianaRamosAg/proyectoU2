@@ -48,6 +48,23 @@ async function findByPrice(priceToFind, Product) {
 
     return productFind;
 }
+//deletedProduct
+async function deletedProduct(idP, product) {
+    var params = {
+        _id: idP
+    }
+    var deletedProduct = await product.findByIdAndRemove({_id:'5d1d4b7fa12f66291cdf9f0c'})
+        .then((data) => {
+            console.log("Eliminar producto");
+            return data;
+        })
+        .catch((err) => {
+            console.log("Error");
+            return err;
+        });
+    return deletedProduct;
+}
 
 module.exports.create = create;
 module.exports.findByPrice = findByPrice;
+module.exports.deletedProduct=deletedProduct;
