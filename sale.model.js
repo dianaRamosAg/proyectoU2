@@ -3,7 +3,9 @@ const mongoose = require("mongoose");
 
 ventaSchema = new mongoose.Schema({
     client: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'Client'
+        type: String,
+        required: true
+        //type: mongoose.Schema.Types.ObjectId, ref: 'Client'
     },
     date:{
         type: Date,
@@ -28,11 +30,11 @@ ventaSchema = new mongoose.Schema({
 
 });
 
-ventarSchema.pre('save', function(next) {
+ventaSchema.pre('save', function(next) {
     var self = this;
-    self.subtotal = self.pVenta+self.pVenta;
-    self.iva = self.subtotal*1.16;
-    self.total = self.iva+self.subtotal;
+    self.subt = self.pVenta+self.pVenta;
+    self.iv= self.subtotal*1.16;
+    self.ttl= self.iva+self.subtotal;
     next();
 });
 

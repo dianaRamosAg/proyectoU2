@@ -66,18 +66,22 @@ findClient("RINR9612211AM9");
 
 // venta
 var dat = new Date();
-async function createSaleAndCP() {
+async function createSaleAndP() {
     var Sale = {
+        client: "Jose Luis Alfaro Martinez",
         date: dat,
-        price: 100,
-        cost: 50
+        subtotal: sub,
+        iva: iv,
+        total: ttl
+
     };
     
-    const brand = "Apple";
+    const client = 50;
     
-    var productCreated = await productsController.create(product, brand, Product, Brand);
-    console.log("------- Producto Creado --------");
-    console.log(productCreated);
+    var saleCreated = await saleController.create(sale, client, Sale, Client);
+    console.log("------- Venta Creada --------");
+    console.log(saleCreated);
+
 }
 
 async function findProduct(price) {
@@ -87,7 +91,7 @@ async function findProduct(price) {
     console.log(productPrice);
 }
  
-createBrandAndProduct();
+createSaleAndP();
 findProduct(100);
 
 
