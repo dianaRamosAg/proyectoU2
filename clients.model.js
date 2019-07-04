@@ -1,19 +1,20 @@
 const mongoose = require("mongoose");
-clienteSchema = new mongoose.Schema({
+
+clientSchema = new mongoose.Schema({
     RFC: {
         type: String,
         required: true,
         match: /^([A-Z,Ñ,&]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[A-Z|\d]{3})$/
     },
-    nombre: {
+    name: {
         type: String,
         required: true
     },
-    domicilio: {
+    address: {
         type: String,
         required: true
     },
-    telefono: {
+    cell: {
         type: String,
         required: true,
         match:/^([0-9]{5})+(-){0,1}([0-9]{5})$/i
@@ -26,4 +27,4 @@ clienteSchema = new mongoose.Schema({
     }
 });
 
-module.exports = clienteSchema;
+module.exports = clientSchema;
