@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 
-productoSchema = new mongoose.Schema({
+module.exports = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -32,4 +32,3 @@ productoSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, ref: 'Brand'
     }
 });
-module.exports = mongoose.model("products", productoSchema);

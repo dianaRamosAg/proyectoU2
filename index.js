@@ -4,11 +4,14 @@ const clientsController = require("./clients.controller");
 var mongoose = require("mongoose");
 var brandSchema = require("./brand.model");
 var productSchema = require("./products.model");
+var clientSchema = require("./clients.model");
 
 mongoose.connect('mongodb://localhost:27017/bdAEU2', { useNewUrlParser: true }); //Conexión
 
 var Brand = mongoose.model('Brand', brandSchema, 'brands');
 var Product = mongoose.model('Product', productSchema, 'products');
+var Client= mongoose.model('Client', clientSchema, 'clients');
+
 
 async function createBrandAndProduct() {
     var product = {
@@ -46,20 +49,20 @@ async function createClient() {
 
     };
     
-    var clientCreated = await clientsController.create(client);
+    var clientCreated = await clientsController.create(client,Client);
     console.log(" Cliente guardado ");
     console.log(clientCreated);
 }
 
 async function findClient(RFC) {
-    var clientRFC = await clientsController.findByRFC(RFC)
+    var clientRFC = await clientsController.findByRFC(RFC,Client)
     console.log("------- Cliente Encontrado  por RFC--------");
     console.log(clientRFC);
 }
 
 createClient();
 findClient("RINR9612211AM9");
-UpdateByCell("3111255293");
+//UpdateByCell("3111255293");
 
 
 
