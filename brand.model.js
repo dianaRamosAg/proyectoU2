@@ -1,11 +1,8 @@
-const mongoose = require("mongoose");
+var mongoose = require("mongoose");
 
-
-marcaSchema = new mongoose.Schema({
-    nombre: {
+module.exports = new mongoose.Schema({
+    brand: {
         type: String,
-        required: true,
+        required: true
     }
 });
-
-module.exports = marcaSchema;

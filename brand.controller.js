@@ -1,24 +1,17 @@
-var mongoose = require("mongoose");
-var schema = require("./marca.model");
 
-var Marca = mongoose.model('Marca', schema, 'marca');
-//------------------CRUD---------------------------------------
-//Insertar
-function insertarM(marca) {
-    Marca.create(marca)
-    .then((data) => {
-        console.log("Marca guardada");
-    })
-    .catch((error) => {
-        console.log("Error en marca");
-        console.log(error);
-    });
+async function create(brand, Brand) {
+    var brandCreated = await Brand.create(brand)
+        .then((data) => {
+            console.log("Marca Guardada!!!");
+            // console.log(data);
+            return data;
+        })
+        .catch((error) => {
+            console.log("Error!!!");
+            // console.log(error);
+            return error;
+        });
+    return brandCreated;
 }
-//Consulta
 
-//Actualizar
-
-//Eliminar
-
-
-module.exports.insertarM= insertarM;
+module.exports.create = create;
