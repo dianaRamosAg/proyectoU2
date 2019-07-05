@@ -155,27 +155,26 @@ async function DeleteClient(id) {
 //UpdateByCell();
 //DeleteClient("5d1e9f0031a04b350c247e5b");
 
-// venta
+//venta
     var dat = new Date();
-    var subt = c;
+    var subt = 5;
     var iv= subt*1.16;
     var ttl= iv+subt;
+console.log(dat);
 
 async function createSaleAndP() {
     var sale = {
-        client: "Sandra Lomeli Aguirre",
         date: dat,
         subtotal: subt,
         iva: iv,
         total: ttl        
     };
 
-    const product = 50;
+    const product2 = "rosa";
 
-    const client = "Jose Luis Alfaro Martinez";
 
     
-    var saleCreated = await saleController.create(sale, product, Sale, Product);
+    var saleCreated = await saleController.create(sale, Sale);
     console.log("------- Venta Creado --------");
     console.log(saleCreated);
 }

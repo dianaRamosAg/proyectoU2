@@ -1,8 +1,6 @@
-// var mongoose = require("mongoose");
-// var productSchema = require("./product.model");
+
 var brandController = require("./brand.controller");
 
-// mongoose.connect('mongodb://localhost:27017/ae2010veje06', { useNewUrlParser: true });
 
 
 async function create(product, brand, Product, Brand) {

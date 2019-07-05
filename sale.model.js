@@ -2,11 +2,6 @@ const mongoose = require("mongoose");
 
 
 module.exports = new mongoose.Schema({
-    client: {
-        type: String,
-        required: true
-        //type: mongoose.Schema.Types.ObjectId, ref: 'Client'
-    },
     date:{
         type: Date,
         //required: true
