@@ -43,6 +43,13 @@ async function findProduct(price) {
 
     console.log(productPrice);
 }
+
+async function findProduct1(Name) {
+    var productName = await productsController.findByName(Name, Product)
+    console.log("------- Productos Encontrado --------");
+
+    console.log(productName);
+}
 //deleted product
 async function deletedProduct(id) {
     var productID = await productsController.deletedProduct(id,Product)
@@ -84,6 +91,7 @@ async function updateByMax(max) {
 //deletedProduct("");
 //createBrandAndProduct();
 //findProduct(100);
+findProduct1();
 
 async function DeleteBrand(id) {
     var BrandID = await brandController.DeleteBrand(id,Brand)

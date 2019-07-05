@@ -48,6 +48,26 @@ async function findByPrice(priceToFind, Product) {
 
     return productFind;
 }
+
+async function findByName(NameToFind, Product) {
+
+    var params = {
+        Name: NameToFind
+    }
+
+    var productFind = await Product.find(params)
+        .then((data) => {
+            // console.log(data);
+            return data;
+        })
+        .catch((err) => {
+            console.log("Not found");
+            return err;
+        });
+
+    return productFind;
+}
+
 //deletedProduct
 async function deletedProduct(idP, Product) {
     var params = {
@@ -151,3 +171,4 @@ module.exports.UpdateByCost=UpdateByCost;
 module.exports.UpdateByQuantity=UpdateByQuantity;
 module.exports.UpdateByMin=UpdateByMin;
 module.exports.UpdateByMax=UpdateByMax;
+module.exports.findByName=findByName;
