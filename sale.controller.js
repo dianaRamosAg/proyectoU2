@@ -8,7 +8,7 @@ async function create(sale, Product, Sale, product) {
         product: product
     };
 
-    var productCreated = await productController.create(product, Product);
+    var productCreated = await productsController.create(product, Product);
 
     sale["clients"] = productCreated.cost;
 
@@ -45,6 +45,7 @@ async function findByPrice(priceToFind, Sale) {
 
     return saleFind;
 }
+
 
 module.exports.create = create;
 module.exports.findByPrice = findByPrice;

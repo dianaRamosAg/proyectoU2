@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 
-ventaSchema = new mongoose.Schema({
+module.exports = new mongoose.Schema({
     client: {
         type: String,
         required: true
@@ -9,32 +9,26 @@ ventaSchema = new mongoose.Schema({
     },
     date:{
         type: Date,
-        required: true
+        //required: true
     },
-    prducts:{
+    prduct:{
         type: mongoose.Schema.Types.ObjectId, ref: 'Products'
     },    
     subtotal: {
         type: Number,
-        required: true
+        //required: true
     },
     iva: {
         type: Number,
-        require: true
+       // require: true
     },
     total: {
         type: Number,
-        required: true
+        //required: true
     }
 
 
 });
 
-ventaSchema.pre('save', function(next) {
-    var self = this;
-    self.subt = self.pVenta+self.pVenta;
-    self.iv= self.subtotal*1.16;
-    self.ttl= self.iva+self.subtotal;
-    next();
-});
+
 

@@ -1,13 +1,12 @@
+    
 const productsController = require("./products.controller");
 const clientsController = require("./clients.controller");
-const saleCintroller = require("./sale.controller");
+const saleController = require("./sale.controller");
 
 var mongoose = require("mongoose");
 var brandSchema = require("./brand.model");
 var productSchema = require("./products.model");
-
 var saleSchema = require("./sale.model");
-
 var clientSchema = require("./clients.model");
 
 
@@ -15,12 +14,11 @@ mongoose.connect('mongodb://localhost:27017/bdAEU2', { useNewUrlParser: true });
 
 var Brand = mongoose.model('Brand', brandSchema, 'brands');
 var Product = mongoose.model('Product', productSchema, 'products');
-
 var Sale = mongoose.model('Sale', saleSchema, 'sale');
-
 var Client= mongoose.model('Client', clientSchema, 'clients');
 
-
+//Producto
+var c;
 async function createBrandAndProduct() {
     var product = {
         name: "MacBook Air",
@@ -37,6 +35,7 @@ async function createBrandAndProduct() {
     var productCreated = await productsController.create(product, brand, Product, Brand);
     console.log("------- Producto Creado --------");
     console.log(productCreated);
+    var c = product.cost;
 }
 
 async function findProduct(price) {
@@ -44,16 +43,21 @@ async function findProduct(price) {
     console.log("------- Productos Encontrado --------");
 
     console.log(productPrice);
+
+   
 }
  
 //createBrandAndProduct();
 //findProduct(100);
+
 
 async function DeleteBrand(id) {
     var BrandID = await brandController.DeleteBrand(id,Brand)
     console.log("------- Marca eliminada--------");
     console.log(BrandID);
 }
+//deletedProduct();
+
 //DeleteBrand();
 
 
@@ -97,34 +101,34 @@ async function DeleteClient(id) {
 //DeleteClient();
 
 // venta
-var dat = new Date();
-async function createSaleAndP() {
-    var Sale = {
-        client: "Jose Luis Alfaro Martinez",
-        date: dat,
-        subtotal: sub,
-        iva: iv,
-        total: ttl
+    var dat = new Date();
+    var subt = c;
+    var iv= subt*1.16;
+    var ttl= iv+subt;
 
+async function createSaleAndP() {
+    var sale = {
+        client: "Sandra Lomeli Aguirre",
+        date: dat,
+        subtotal: subt,
+        iva: iv,
+        total: ttl        
     };
     
-    const client = 50;
+    const product = 50;
     
-    var saleCreated = await saleController.create(sale, client, Sale, Client);
-    console.log("------- Venta Creada --------");
+    var saleCreated = await saleController.create(sale, product, Sale, Product);
+    console.log("------- Venta Creado --------");
     console.log(saleCreated);
-
 }
 
 async function findProduct(price) {
-    var productPrice = await productsController.findByPrice(price, Product)
+    var salePrice = await saleController.findByPrice(price, Sale)
     console.log("------- Productos Encontrado --------");
 
-    console.log(productPrice);
+    console.log(salePrice);
 }
  
+ 
 createSaleAndP();
-findProduct(100);
-
-
-
+//findProduct(100);
