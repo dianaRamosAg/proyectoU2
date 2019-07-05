@@ -16,7 +16,7 @@ async function DeleteBrand(idB, Brand) {
     var params = {
         _id: idB
     }
-    var deleteBrand2 = await Brand.findByIdAndRemove({_id:'5d1d4d323c5b76276c684f17'})
+    var deleteBrand2 = await Brand.findByIdAndRemove({_id:'5d1d4b7ea12f66291cdf9f0b'})
         .then((data) => {
             console.log("Eliminar Marca");
             return data;

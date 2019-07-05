@@ -3,7 +3,11 @@ const productsController = require("./products.controller");
 const clientsController = require("./clients.controller");
 const saleController = require("./sale.controller");
 
+const brandController = require("./brand.controller");
+
+
 var mongoose = require("mongoose");
+
 var brandSchema = require("./brand.model");
 var productSchema = require("./products.model");
 var saleSchema = require("./sale.model");
@@ -18,19 +22,21 @@ var Sale = mongoose.model('Sale', saleSchema, 'sale');
 var Client= mongoose.model('Client', clientSchema, 'clients');
 
 //Producto
+
 var c;
+
 async function createBrandAndProduct() {
     var product = {
-        name: "MacBook Air",
-        price: 100,
+        name: "Refresco",
+        price: 13,
         cost: 50,
         quantity:30,
-        min: 10,
-        max: 50
+        min: 8,
+        max: 22
 
     };
     
-    const brand = "Apple";
+    const brand = "Coca cola";
     
     var productCreated = await productsController.create(product, brand, Product, Brand);
     console.log("------- Producto Creado --------");
@@ -46,9 +52,55 @@ async function findProduct(price) {
 
    
 }
- 
+
+async function findProduct1(Name) {
+    var productName = await productsController.findByName(Name, Product)
+    console.log("------- Productos Encontrado --------");
+
+    console.log(productName);
+}
+//deleted product
+async function deletedProduct(id) {
+    var productID = await productsController.deletedProduct(id,Product)
+    console.log("------- producto eliminado--------");
+    console.log(productID);
+}
+//update product
+async function updateByPrice(price) {
+    var price = await productsController.UpdateByPrice(price,Product)
+    console.log("------- precio de producto actualizado--------");
+    console.log(price);
+}
+async function updateByCost(cost) {
+    var cost = await productsController.UpdateByCost(cost,Product)
+    console.log("------- costo de producto actualizado--------");
+    console.log(cost);
+}
+async function updateByQuantity(quantity) {
+    var quantity = await productsController.UpdateByQuantity(quantity,Product)
+    console.log("------- cantidad de producto actualizado--------");
+    console.log(quantity);
+}
+async function updateByMin(min) {
+    var min = await productsController.UpdateByMin(min,Product)
+    console.log("------- cantidad minima de producto actualizado--------");
+    console.log(min);
+}
+async function updateByMax(max) {
+    var max = await productsController.UpdateByMax(max,Product)
+    console.log("------- cantidad minima de producto actualizado--------");
+    console.log(max);
+}
+//------------------ Metodos de producto --------------------------
+//updateByMax();
+//updateByMin();
+//updateByQuantity();
+//updateByCost();
+//updateByPrice();
+//deletedProduct("");
 //createBrandAndProduct();
 //findProduct(100);
+findProduct1();
 
 
 async function DeleteBrand(id) {
@@ -57,6 +109,9 @@ async function DeleteBrand(id) {
     console.log(BrandID);
 }
 //deletedProduct();
+
+
+// --- Metodos de Marca
 
 //DeleteBrand();
 
@@ -93,12 +148,12 @@ async function DeleteClient(id) {
     console.log("------- Cliente eliminado--------");
     console.log(clientID);
 }
-
+//------------- Metodos de cliente -------------
 
 //createClient();
 //findClient("GAFJ810702NA0");
 //UpdateByCell();
-//DeleteClient();
+//DeleteClient("5d1e9f0031a04b350c247e5b");
 
 // venta
     var dat = new Date();
@@ -114,8 +169,11 @@ async function createSaleAndP() {
         iva: iv,
         total: ttl        
     };
-    
+
     const product = 50;
+
+    const client = "Jose Luis Alfaro Martinez";
+
     
     var saleCreated = await saleController.create(sale, product, Sale, Product);
     console.log("------- Venta Creado --------");
@@ -129,6 +187,9 @@ async function findProduct(price) {
     console.log(salePrice);
 }
  
- 
+
 createSaleAndP();
 //findProduct(100);
+//createSaleAndP();
+//findProduct(100);
+
