@@ -49,7 +49,7 @@ async function DeleteClient(idC, Client) {
     var params = {
         _id: idC
     }
-    var deleteClient = await Client.findByIdAndRemove({_id:'5d1d4d323c5b76276c684f17'})
+    var deleteClient = await Client.findByIdAndRemove(params)
         .then((data) => {
             console.log("Eliminar cliente");
             return data;

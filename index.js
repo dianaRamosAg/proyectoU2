@@ -1,13 +1,13 @@
 const productsController = require("./products.controller");
 const clientsController = require("./clients.controller");
-const saleCintroller = require("./sale.controller");
+const saleController = require("./sale.controller");
+const brandController = require("./brand.controller");
 
 var mongoose = require("mongoose");
+
 var brandSchema = require("./brand.model");
 var productSchema = require("./products.model");
-
 var saleSchema = require("./sale.model");
-
 var clientSchema = require("./clients.model");
 
 
@@ -15,24 +15,22 @@ mongoose.connect('mongodb://localhost:27017/bdAEU2', { useNewUrlParser: true });
 
 var Brand = mongoose.model('Brand', brandSchema, 'brands');
 var Product = mongoose.model('Product', productSchema, 'products');
-
 var Sale = mongoose.model('Sale', saleSchema, 'sale');
-
 var Client= mongoose.model('Client', clientSchema, 'clients');
 
 //Producto
 async function createBrandAndProduct() {
     var product = {
-        name: "MacBook Air",
-        price: 100,
+        name: "Refresco",
+        price: 13,
         cost: 50,
         quantity:30,
-        min: 10,
-        max: 50
+        min: 8,
+        max: 22
 
     };
     
-    const brand = "Apple";
+    const brand = "Coca cola";
     
     var productCreated = await productsController.create(product, brand, Product, Brand);
     console.log("------- Producto Creado --------");
@@ -77,12 +75,13 @@ async function updateByMax(max) {
     console.log("------- cantidad minima de producto actualizado--------");
     console.log(max);
 }
+//------------------ Metodos de producto --------------------------
 //updateByMax();
 //updateByMin();
 //updateByQuantity();
 //updateByCost();
 //updateByPrice();
-//deletedProduct();
+//deletedProduct("");
 //createBrandAndProduct();
 //findProduct(100);
 
@@ -92,9 +91,7 @@ async function DeleteBrand(id) {
     console.log(BrandID);
 }
 
-//
-
-
+// --- Metodos de Marca
 //DeleteBrand();
 
 
@@ -130,18 +127,18 @@ async function DeleteClient(id) {
     console.log("------- Cliente eliminado--------");
     console.log(clientID);
 }
-
+//------------- Metodos de cliente -------------
 
 //createClient();
 //findClient("GAFJ810702NA0");
 //UpdateByCell();
-//DeleteClient();
+//DeleteClient("5d1e9f0031a04b350c247e5b");
 
 // venta
 var dat = new Date();
 async function createSaleAndP() {
     var Sale = {
-        client: "Jose Luis Alfaro Martinez",
+        //client: "Jose Luis Alfaro Martinez",
         date: dat,
         subtotal: sub,
         iva: iv,
@@ -149,7 +146,7 @@ async function createSaleAndP() {
 
     };
     
-    const client = 50;
+    const client = "Jose Luis Alfaro Martinez";
     
     var saleCreated = await saleController.create(sale, client, Sale, Client);
     console.log("------- Venta Creada --------");

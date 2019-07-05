@@ -54,7 +54,7 @@ async function deletedProduct(idP, Product) {
         _id: idP
 
     }
-    var deletedProduct = await Product.findByIdAndRemove({_id:'5d1d4b7fa12f66291cdf9f0c'})
+    var deletedProduct = await Product.findByIdAndRemove(params)
         .then((data) => {
             console.log("Eliminar producto");
             return data;
