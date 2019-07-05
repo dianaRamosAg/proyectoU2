@@ -179,7 +179,7 @@ async function createSaleAndP() {
     console.log(saleCreated);
 }
 
-async function findProduct(price) {
+async function findByTotal(total) {
     var salePrice = await saleController.findByPrice(price, Sale)
     console.log("------- Productos Encontrado --------");
 
@@ -188,7 +188,6 @@ async function findProduct(price) {
  
 
 createSaleAndP();
-//findProduct(100);
-//createSaleAndP();
-//findProduct(100);
+//findByTotal(100);
+
 

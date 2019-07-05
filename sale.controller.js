@@ -40,26 +40,25 @@ async function create(sale,Sale) {
     return saleCreated;
 }
 //Buscar 
-async function findByPrice(priceToFind, Sale) {
+async function findByTotal(t, Sale) {
 
     var params = {
-        price: priceToFind
+        total: t
     }
 
     var saleFind = await Sale.find(params)
-        .populate("products")
-        .then((data) => {
-            // console.log(data);
-            return data;
-        })
-        .catch((err) => {
-            console.log("Not found");
-            return err;
-        });
+    .then((data) => {
+        console.log("exito");
+        return data;
+    })
+    .catch((err) => {
+        console.log("Error");
+        return err;
+    });
 
     return saleFind;
 }
 
 
 module.exports.create = create;
-module.exports.findByPrice = findByPrice;
+module.exports.findByTotal = findByTotal;
