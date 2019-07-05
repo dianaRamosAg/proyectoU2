@@ -52,7 +52,7 @@ async function findByPrice(priceToFind, Product) {
 async function findByName(NameToFind, Product) {
 
     var params = {
-        Name: NameToFind
+        name: NameToFind
     }
 
     var productFind = await Product.find(params)

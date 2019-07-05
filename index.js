@@ -53,7 +53,7 @@ async function findProduct(price) {
    
 }
 
-async function findProduct1(Name) {
+async function findByName(Name) {
     var productName = await productsController.findByName(Name, Product)
     console.log("------- Productos Encontrado --------");
 
@@ -100,7 +100,7 @@ async function updateByMax(max) {
 //deletedProduct("");
 //createBrandAndProduct();
 //findProduct(100);
-findProduct1();
+//findByName("MacBook Air");
 
 
 async function DeleteBrand(id) {
